@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'uci_course',
         'USER': 'root',
-        'PASSWORD': 'b!fjdi829wAsd625',
+        'PASSWORD': '1a2b3c4d5e!',
         'HOST': 'localhost',
         'PORT': '3306'
     }

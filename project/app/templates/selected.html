@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <!-- Head tag -->
@@ -145,17 +145,9 @@
 
                 <section class="main">
 
-
-                    <div class="post">
-
-                        <div class="post-header index">
-                            <h1 class="title">
-                                <p>To be continued.</p>
-                            </h1>
-                        </div>
-
-
-                    </div>
+                {% autoescape off %}
+                {{courses}}
+                {% endautoescape %}
 
                 </section>
             </div>

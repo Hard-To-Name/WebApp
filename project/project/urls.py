@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^selected$', first_views.selected, name = "selected"),
     url(r'^schedule$', first_views.schedule, name = "schedule"),
     url(r'^toolbox$', first_views.toolbox, name = "toolbox"),
+    url(r'^search$', first_views.search, name = "search"),
+    url(r'^search/remove$', first_views.remove_element, name = "remove"),
 ]

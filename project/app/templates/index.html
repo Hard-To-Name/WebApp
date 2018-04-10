@@ -64,7 +64,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/style.css">
 
-    <!-- Google Analytics -->
+    <!-- LOAD ANGULAR -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 
 
 
@@ -171,16 +172,22 @@
                                 }
                             </style>
 
-                            <input type="text" class="form-control" id="dept"
-                                   placeholder="Dept. Name" ng-model="dept">
+                            <form id="search-form" action='{% url "search" %}'
+                                  method="post">
+                                {% csrf_token %}
 
-                            <input type="text" class="form-control" id="c_num"
-                                   placeholder="Course Number" ng-model="c_num">
+                                <input type="text" class="form-control" name="dept"
+                                       placeholder="Dept. Name">
 
-                            <input type="text" class="form-control" id="c_code"
-                                   placeholder="Course Code" ng-model="c_code">
+                                <input type="text" class="form-control" name="c_num"
+                                       placeholder="Course Number">
 
-                            <button id="submit" class="form-control">Submit</button>
+                                <input type="text" class="form-control" name="c_code"
+                                       placeholder="Course Code">
+
+                                <input type="submit" class="form-control" id="submit" value="submit"> 
+
+                            </form>
 
                         </div>
 

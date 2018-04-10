@@ -35,10 +35,15 @@ def get_info(data_form:dict):
         except: print("Order Invalid.")
     return response.text
 
+def dept_format(dept:str):
+    dept = dept.replace(' ', '')
+    dept = dept.replace('&', '')
+    dept = dept.replace('/', '')
+    dept.lower()
+    return dept
+
 def add_row(info:list, cur):
-    info[0] = info[0].replace(' ', '')
-    info[0] = info[0].replace('&', '')
-    info[0] = info[0].replace('/', '')
+    info[0] = dept_format(info[0])
     #print(info[0])
     cur.execute("REPLACE INTO {} (course_num, course_code, type, waitlist, status)\
                  VALUES ('{}', '{}', '{}', '{}', '{}')".format(info[0], info[1], info[2], info[3], info[4], info[5]))
@@ -66,7 +71,6 @@ def handle(raw_info:str, dept:str, cur):
                 status   = line[st_index:]
                 status   = status.rstrip()
                 add_row([dept, c_num, c_code, type, waitlist, status], cur)
-    return [dept, c_num, c_code, type, waitlist, status]
 
 def update_db(cur):
     year_term = "2018-" + term["Spring"]
@@ -83,7 +87,7 @@ def update_db(cur):
 
 
 def search(dept, c_num, c_code):
-    
+    # search and update database
     
     data_form = {"YearTerm": "2018-" + term["Spring"],
                  "Dept": dept,
@@ -93,14 +97,13 @@ def search(dept, c_num, c_code):
                  }
 
     raw_info = get_info(data_form)
-    return handle(raw_info, dept, cur)
+    handle(raw_info, dept, cur)
 
 def init(cur):
+    # initialize database by creating tables for all departments
     for i, j in c_dict.items():
         for dept in j:
-            dept = dept.replace(' ', '')
-            dept = dept.replace('&', '')
-            dept = dept.replace('/', '')
+            dept = dept_format(dept)
             cur.execute("CREATE TABLE IF NOT EXISTS {} (\
                 course_num varchar(255),\
                 course_code varchar(255),\
@@ -112,7 +115,7 @@ def init(cur):
 def main():
     db = MySQLdb.connect(host = "localhost",
                          user = "root",
-                         passwd = "1a2b3c4d5e!",
+                         passwd = "b!fjdi829wAsd625",
                          db = "uci_course")
     cur = db.cursor()
     #init(cur)

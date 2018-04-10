@@ -1,0 +1,29 @@
+                    <div class="post" id="course{}">
+
+                        <div class="post-header index">
+                            <h1 class="title">
+                                <p>Department: {}, Course number: {}, Course code: {}, Type: {}, Waitlist: {}, Status: {}</p>
+                            </h1>
+
+                        </div>
+
+                        <center><button onclick="delete_course()" style="color:black; width:50em">Delete</button></center>
+
+                        <script type="text/javascript">
+                            function delete_course() {{
+								var temp = document.createElement("form");
+								temp.action = 'search/remove';
+								temp.method = 'POST';
+								temp.style.display = 'none';
+
+                                var index = document.createElement("textarea");
+								index.name =  "index";
+								index.value = {};
+								temp.appendChild(index);
+
+								document.body.appendChild(temp);
+								temp.submit();
+                            }}
+                        </script>
+
+                    </div>

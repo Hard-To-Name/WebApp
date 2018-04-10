@@ -3,10 +3,13 @@
     "",
     "\\project",
     "\\project\\app",
+    "\\project\\app\\static",
+    "\\project\\app\\static\\css",
+    "\\project\\app\\static\\js",
     "\\project\\app\\templates",
     "\\project\\project",
     "\\Scraping"
   ],
-  "SelectedNode": "\\project\\project\\urls.py",
+  "SelectedNode": "\\project\\app\\views.py",
   "PreviewInSolutionExplorer": false
 }
