@@ -40,3 +40,4 @@ Example Webpage:
 ## Authors
 
 * **Ran Duan**
+- Webpage style designed by Jonathan Klughertz
