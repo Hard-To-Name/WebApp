@@ -25,7 +25,6 @@ def deptcode_list(dept_or_index, c_code):
     print(text)
     if dept_or_index != "" and c_code != "": # combination
         form = dept_or_index + " " + c_code + "\n"
-        print(form, '\n', text)
         if form not in text:
             text.append(form)
             cache.seek(0)
@@ -33,6 +32,7 @@ def deptcode_list(dept_or_index, c_code):
             for line in text:
                 cache.write(line)
     elif c_code == "" and dept_or_index != "": # index
+        print("ttt:", dept_or_index - 1)
         text.remove(text[dept_or_index - 1])
         cache.seek(0)
         cache.truncate()

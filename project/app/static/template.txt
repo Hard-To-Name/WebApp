@@ -7,7 +7,10 @@
 
                         </div>
 
-                        <center><button onclick="delete_course()" style="color:black; width:50em">Delete</button></center>
+                        <center>
+							<button onclick="delete_course()" style="color:black; background-color:#cae5f9; width:25em">Delete</button>
+							<button onclick="alert('To Be Continued.')" style="color:black; background-color:#cae5f9; width:25em">Update</button>
+						</center>
 
                         <script type="text/javascript">
                             function delete_course() {{
