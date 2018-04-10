@@ -12,7 +12,7 @@
                         <script type="text/javascript">
                             function delete_course() {{
 								var temp = document.createElement("form");
-								temp.action = 'search/remove';
+								temp.action = '/remove';
 								temp.method = 'POST';
 								temp.style.display = 'none';
 

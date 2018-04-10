@@ -22,15 +22,22 @@ def deptcode_list(dept_or_index, c_code):
     # dept + c_code combination / index alone / both default
     cache = open("app/static/cache.txt", "r+")
     text = cache.readlines()
+    print(text)
     if dept_or_index != "" and c_code != "": # combination
         form = dept_or_index + " " + c_code + "\n"
         print(form, '\n', text)
         if form not in text:
             text.append(form)
-            cache.writelines(text)
+            cache.seek(0)
+            cache.truncate()
+            for line in text:
+                cache.write(line)
     elif c_code == "" and dept_or_index != "": # index
-        del text[dept_or_index - 1]
-        cache.writelines(text)
+        text.remove(text[dept_or_index - 1])
+        cache.seek(0)
+        cache.truncate()
+        for line in text:
+            cache.write(line)
     cache.close()
     return text
 
@@ -41,6 +48,11 @@ def generate_template(info:list, dept:str, c_index:int):
     return html_text.format(c_index, dept, info[0], info[1], info[2], info[3], info[4], c_index)
 
 def update_selected(dept, c_num, c_code):
+    result  = []
+    c_index = 0
+    dc_list = deptcode_list(dept, c_code)
+    if dc_list == []: return ""
+
     db = websoc.MySQLdb.connect(host = "localhost",
                          user = "root",
                          passwd = "1a2b3c4d5e!",
@@ -50,9 +62,6 @@ def update_selected(dept, c_num, c_code):
     #info_list = websoc.search(dept, c_num, c_code, cur)
     #db.commit()
 
-    result  = []
-    c_index = 0
-    dc_list = deptcode_list(dept, c_code)
     for dc in dc_list:
         c_index += 1
         dc_pair = [dc[0:-6], dc[-6:-1]]
